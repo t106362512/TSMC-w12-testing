@@ -1,23 +1,29 @@
 import { Game } from './game';
 
 describe('Game', () => {
-  it('should create an instance', () => {
-    expect(new Game()).toBeTruthy();
+  let game: Game;
+
+  beforeEach(() => {
+    game = new Game();
   });
-});
 
-test('gutter game', () => {
-  const game = new Game();
-  for (let i = 0; i < 20; i++) {
-    game.roll(0);
-  }
-  expect(game.score).toBe(0);
-});
+  it('should create an instance', () => {
+    expect(game).toBeTruthy();
+  });
 
-test('all one', () => {
-  const game = new Game();
-  for (let i = 0; i < 20; i++) {
-    game.roll(1);
+  test('all zero', () => {
+    rollMany(20, 0);
+    expect(game.score).toBe(0);
+  });
+
+  test('all one', () => {
+    rollMany(20, 1);
+    expect(game.score).toBe(20);
+  });
+
+  function rollMany(n: number, pins: number) {
+    for (let i = 0; i < n; i++) {
+      game.roll(pins);
+    }
   }
-  expect(game.score).toBe(20);
 });
