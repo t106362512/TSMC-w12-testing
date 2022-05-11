@@ -1,7 +1,7 @@
 export class Game {
-    roll(pins: number) {}
-  
-    get score() {
-      return -1;
-    }
+  roll(pins: number) {}
+
+  get score() {
+    return 0;
   }
+}
